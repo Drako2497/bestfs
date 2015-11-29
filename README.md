@@ -41,6 +41,10 @@ Homework Assignment 04 due November 29, 2015
 * listfb()
 * dumpfs()
 
+###### The data structure of the file system
+
+* Softlinks and i-nodes
+
 # Remarks
 
 Originally developed on C.  Ran into too many problems with memory management and segmentations.
