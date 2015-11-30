@@ -173,7 +173,7 @@ public class BestFS
 		{
 			File foundFile = findFile(dir);
 			
-			if(foundFile.isFolder)
+			if(foundFile != null && foundFile.isFolder)
 			{
 				for(int i = 0; i < foundFile.childrenDir.size(); i++)
 				{
@@ -217,7 +217,17 @@ public class BestFS
 	 */
 	private void movf(String file, String dir)
 	{
+		File dFile = findFile(dir);
 		
+		for(int i = 0; i < currentDir.size(); i++)
+		{
+			if(dFile.isFolder && currentDir.get(i).name.equals(file))
+			{
+					File sFile = currentDir.get(i);
+					currentDir.remove(sFile);
+					dFile.childrenDir.add(sFile);
+			}
+		}
 	}
 	
 	/** 
@@ -225,7 +235,16 @@ public class BestFS
 	 */
 	private void listfb()
 	{
-		
+		for(int i = 0; i < listOfFreeSpace.length; i++)
+		{
+			ArrayList<Integer> freeBlocks = new ArrayList<Integer>();
+			
+			if(listOfFreeSpace[i] == -1)
+			{
+				freeBlocks.add(i);
+				System.out.println(listOfFreeSpace[i]);			
+			}
+		}
 	}
 	
 	/** 
@@ -233,9 +252,15 @@ public class BestFS
 	 */
 	private void dumpfs()
 	{
+		ArrayList<File> files = new ArrayList<File>();
 		
+		for(int i = 0; i < files.size(); i++)
+		{
+			System.out.println(files.get(i).parentDir.name);
+			System.out.println(files.get(i).childrenDir.get(i).name);
+		}
 	}
-
+	
 	/**
 	 * Initiates the current directory with root.
 	 */
