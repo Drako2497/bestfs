@@ -191,11 +191,13 @@ public class BestFS
 	{
 		File fileF = findFile(file);
 		
-		for(int i = 0; i < fileF.blocksUsed.size(); i++)
+		if(fileF != null)
 		{
-			System.out.println(fileF.blocksUsed.get(i).toString());
+			for(int i = 0; i < fileF.blocksUsed.size(); i++)
+			{
+				System.out.println(fileF.blocksUsed.get(i).toString());
+			}
 		}
-	    
 	}
 	
 	/** Print out the size of "file" both in number of blocks and in number of bytes
@@ -221,7 +223,7 @@ public class BestFS
 		
 		for(int i = 0; i < currentDir.size(); i++)
 		{
-			if(dFile.isFolder && currentDir.get(i).name.equals(file))
+			if(dFile != null && dFile.isFolder && currentDir.get(i).name.equals(file))
 			{
 					File sFile = currentDir.get(i);
 					currentDir.remove(sFile);
@@ -242,7 +244,7 @@ public class BestFS
 			if(listOfFreeSpace[i] == -1)
 			{
 				freeBlocks.add(i);
-				System.out.println(listOfFreeSpace[i]);			
+				System.out.println(listOfFreeSpace[i]);
 			}
 		}
 	}
@@ -260,7 +262,7 @@ public class BestFS
 			System.out.println(files.get(i).childrenDir.get(i).name);
 		}
 	}
-	
+
 	/**
 	 * Initiates the current directory with root.
 	 */
