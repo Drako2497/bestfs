@@ -237,13 +237,13 @@ public class BestFS
 	 */
 	private void listfb()
 	{
-		for(int i = 0; i < listOfFreeSpace.length; i++)
+		for(int i = 0; i < diskspace.length; i++)
 		{
 			ArrayList<Integer> freeBlocks = new ArrayList<Integer>();
 			
 			if(listOfFreeSpace[i] == -1)
 			{
-				freeBlocks.add(i);
+				freeBlocks.add(listOfFreeSpace[i]);
 				System.out.println(listOfFreeSpace[i]);
 			}
 		}
@@ -477,15 +477,15 @@ public class BestFS
 		formatd();
 		listfb();
 		dumpfs();
-		deletefd("testfile");
+		deletefd("Delete testfile");
 		listd("testdir");
 		listf("testfile");
 		sizef("testfile");
-		movf("testfile", "testdir");
-		deletefd("testfile2");
+		movf("Move testfile to testdir", "Testfile is in testdir");
+		deletefd("Delete testfile2");
 		listf("testfile2");
 		sizef("testfile2");
-		movf("testfile2", "testdir");
+		movf("Move testfile2 to testdir", "Testfile is in testdir2");
 		listfb();
 		dumpfs();
 	}
